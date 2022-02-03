@@ -2402,6 +2402,10 @@ msgstr "Ton adresse e-mail a été modifiée. Tu peux te reconnecter avec ta nou
 msgid "Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception."
 msgstr "Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception."
 
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
+msgid "Ton adresse ne doit pas contenir de caractères spéciaux ou n'être composée que d'espaces."
+msgstr "Ton adresse ne doit pas contenir de caractères spéciaux ou n'être composée que d'espaces."
+
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
