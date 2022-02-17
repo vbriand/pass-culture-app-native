@@ -830,7 +830,7 @@ workflows:
             - GCP_APP_NATIVE_EHP
       - deploy-web-integration:
           filters:
-            tags:
+#            tags:
 #              only:
 #                - /^prod-hard-deploy.*/
 #                - /^hotfix-prod.*/
