@@ -817,12 +817,13 @@ workflows:
             - GCP_APP_NATIVE_EHP
       - deploy-web-staging:
           filters:
-            tags:
-              only:
-                - /^v.*/
-                - /^hotfix-staging.*/
+#            tags:
+#              only:
+#                - /^v.*/
+#                - /^hotfix-staging.*/
             branches:
-              ignore: /.*/
+#              ignore: /.*/
+              only: v1.174.0-with-sourcemaps
           requires:
             - wait_for_approval_web_to_deploy
           context:
@@ -863,7 +864,8 @@ workflows:
                 - /^v.*/
                 - /^hotfix-staging.*/
             branches:
-              ignore: /.*/
+              only: v1.174.0-with-sourcemaps
+#              ignore: /.*/
           type: approval
           requires:
             - checkout-and-install-deps
