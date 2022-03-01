@@ -818,12 +818,14 @@ workflows:
             - GCP_APP_NATIVE_EHP
       - deploy-web-staging:
           filters:
-            tags:
-              only:
-                - /^v.*/
-                - /^hotfix-staging.*/
+#            tags:
+#              only:
+#                - /^v.*/
+#                - /^hotfix-staging.*/
             branches:
-              ignore: /.*/
+              only:
+                - v1.176.1-web
+#              ignore: /.*/
           requires:
             - wait_for_approval_web_to_deploy
           context:
@@ -831,12 +833,9 @@ workflows:
             - GCP_APP_NATIVE_EHP
       - deploy-web-integration:
           filters:
-            tags:
-              only:
-                - /^prod-hard-deploy.*/
-                - /^hotfix-prod.*/
             branches:
-              ignore: /.*/
+              only:
+                - v1.176.1-web
           requires:
             - wait_for_approval_web_to_deploy
           context:
@@ -844,12 +843,15 @@ workflows:
             - GCP_APP_NATIVE_EHP
       - deploy-web-prod:
           filters:
-            tags:
-              only:
-                - /^prod-hard-deploy.*/
-                - /^hotfix-prod.*/
+#            tags:
+#              only:
+#                - /^prod-hard-deploy.*/
+#                - /^hotfix-prod.*/
+#            branches:
+#              ignore: /.*/
             branches:
-              ignore: /.*/
+              only:
+                - v1.176.1-web
           requires:
             - wait_for_approval_web_to_deploy
           context:
@@ -857,14 +859,15 @@ workflows:
             - GCP_APP_NATIVE_PROD
       - wait_for_approval_web_to_deploy:
           filters:
-            tags:
-              only:
-                - /^prod-hard-deploy.*/
-                - /^hotfix-prod.*/
-                - /^v.*/
-                - /^hotfix-staging.*/
+#            tags:
+#              only:
+#                - /^prod-hard-deploy.*/
+#                - /^hotfix-prod.*/
+#                - /^v.*/
+#                - /^hotfix-staging.*/
             branches:
-              ignore: /.*/
+              only:
+                - v1.176.1-web
           type: approval
           requires:
             - checkout-and-install-deps
