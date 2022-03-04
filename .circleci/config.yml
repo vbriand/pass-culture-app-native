@@ -698,20 +698,22 @@ workflows:
             - checkout-and-install-deps
       - deploy-android-testing-hard:
           filters:
-            tags:
-              only: /^(testing_)?v.*/
+#            tags:
+#              only: /^(testing_)?v.*/
             branches:
-              ignore: /.*/
+#              ignore: /.*/
+              only: v1.177.0-sentry-jennmueng
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - deploy-ios-testing-hard:
           filters:
-            tags:
-              only: /^(testing_)?v.*/
+#            tags:
+#              only: /^(testing_)?v.*/
             branches:
-              ignore: /.*/
+#              ignore: /.*/
+              only: v1.177.0-sentry-jennmueng
           requires:
             - checkout-and-install-deps
             - test-lint-and-types

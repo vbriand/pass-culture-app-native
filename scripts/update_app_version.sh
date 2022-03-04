@@ -67,4 +67,4 @@ check_hard_hotfix_integrity(){
 # $2 is upgrade level (major, minor or patch)
 update_app_version "$1" "$2"
 
-check_hard_hotfix_integrity
+#check_hard_hotfix_integrity

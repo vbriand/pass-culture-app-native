@@ -7,7 +7,7 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.177.0",
+  "version": "1.177.0-sentry-jennmueng",
   "build": 10177000,
   "private": true,
   "engines": {
