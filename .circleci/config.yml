@@ -679,6 +679,8 @@ workflows:
           filters:
             tags:
               only: /.*/
+            branches:
+              only: debug-testing-assets
       - test-lint-and-types:
           requires:
             - checkout-and-install-deps
@@ -807,14 +809,16 @@ workflows:
             - test-native
       - deploy-web-testing:
           filters:
-            tags:
-              ignore: /.*/
+#            tags:
+#              ignore: /.*/
+#            branches:
+#              only: master
             branches:
-              only: master
+              only: debug-testing-assets
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            - test-web
+#            - test-web
           context:
             - GCP
             - GCP_APP_NATIVE_EHP
