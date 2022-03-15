@@ -677,8 +677,10 @@ workflows:
     jobs:
       - checkout-and-install-deps:
           filters:
-            tags:
-              only: /.*/
+            branches:
+              only: taskforce2
+#            tags:
+#              only: /.*/
       - test-lint-and-types:
           requires:
             - checkout-and-install-deps
@@ -729,24 +731,28 @@ workflows:
             - deploy-android-testing-hard
       - deploy-android-staging-hard:
           filters:
-            tags:
-              only: /^(patch\/)?v.*/
             branches:
-              ignore: /.*/
+              only: taskforce2
+#            tags:
+#              only: /^(patch\/)?v.*/
+#            branches:
+#              ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            - test-native
+#            - test-native
       - deploy-ios-staging-hard:
           filters:
-            tags:
-              only: /^(patch\/)?v.*/
             branches:
-              ignore: /.*/
+              only: taskforce2
+#            tags:
+#              only: /^(patch\/)?v.*/
+#            branches:
+#              ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            - test-native
+#            - test-native
       - notify-hard-staging-release:
           filters:
             tags:
