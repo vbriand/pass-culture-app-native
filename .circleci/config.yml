@@ -677,8 +677,10 @@ workflows:
     jobs:
       - checkout-and-install-deps:
           filters:
-            tags:
-              only: /.*/
+            branches:
+              only: deploy-staging-v1.178.1
+      #            tags:
+#              only: /.*/
       - test-lint-and-types:
           requires:
             - checkout-and-install-deps
@@ -820,12 +822,14 @@ workflows:
             - GCP_APP_NATIVE_EHP
       - deploy-web-staging:
           filters:
-            tags:
-              only:
-                - /^v.*/
-                - /^hotfix-staging.*/
             branches:
-              ignore: /.*/
+              only: deploy-staging-v1.178.1
+#            tags:
+#              only:
+#                - /^v.*/
+#                - /^hotfix-staging.*/
+#            branches:
+#              ignore: /.*/
           requires:
             - wait_for_approval_web_to_deploy
           context:
@@ -859,14 +863,16 @@ workflows:
             - GCP_APP_NATIVE_PROD
       - wait_for_approval_web_to_deploy:
           filters:
-            tags:
-              only:
-                - /^prod-hard-deploy.*/
-                - /^hotfix-prod.*/
-                - /^v.*/
-                - /^hotfix-staging.*/
             branches:
-              ignore: /.*/
+              only: deploy-staging-v1.178.1
+#            tags:
+#              only:
+#                - /^prod-hard-deploy.*/
+#                - /^hotfix-prod.*/
+#                - /^v.*/
+#                - /^hotfix-staging.*/
+#            branches:
+#              ignore: /.*/
           type: approval
           requires:
             - checkout-and-install-deps
