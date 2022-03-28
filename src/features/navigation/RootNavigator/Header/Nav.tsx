@@ -27,21 +27,19 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   }
 
   return (
-    <NavItemsContainer maxWidth={maxWidth} height={height} noShadow={noShadow}>
+    <NavItemsContainer maxWidth={maxWidth} navHeight={height} noShadow={noShadow}>
       <Ul>
         {tabRoutes.map((route, index) => (
-          <React.Fragment key={`key-tab-nav-${route.name}`}>
+          <StyledLi key={`key-tab-nav-${route.name}`}>
             {index > 0 && <Spacer.Row numberOfSpaces={1.5} />}
-            <Li>
-              <NavItem
-                tabName={route.name}
-                isSelected={route.isSelected}
-                BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
-                to={{ screen: route.name, params: undefined }}
-                onPress={() => onPress(route.name)}
-              />
-            </Li>
-          </React.Fragment>
+            <NavItem
+              tabName={route.name}
+              isSelected={route.isSelected}
+              BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
+              to={{ screen: route.name, params: undefined }}
+              onPress={() => onPress(route.name)}
+            />
+          </StyledLi>
         ))}
       </Ul>
     </NavItemsContainer>
@@ -50,14 +48,14 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
 
 const NavItemsContainer = styled.nav<{
   maxWidth?: number
-  height?: number
+  navHeight?: number
   noShadow?: boolean
-}>(({ maxWidth, height, noShadow }) => ({
+}>(({ maxWidth, navHeight, noShadow }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  height: height ?? theme.appBarHeight,
+  height: navHeight ?? theme.appBarHeight,
   width: '100%',
   maxWidth,
   position: 'absolute',
@@ -71,3 +69,7 @@ const NavItemsContainer = styled.nav<{
       })
     : {}),
 }))
+
+const StyledLi = styled(Li)({
+  display: 'flex',
+})
