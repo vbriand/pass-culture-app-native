@@ -42,8 +42,8 @@ const NotMemoizedImagePlaceholderVenue: React.FC<Props> = ({
           x2="145.524"
           y2="229.885"
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor={primary} />
-          <Stop offset="1" stopColor={secondary} />
+          <Stop offset="0%" stopColor={primary} />
+          <Stop offset="100%" stopColor={secondary} />
         </LinearGradient>
         <LinearGradient
           id={LINEAR_GRADIENT_ID_2}
