@@ -717,26 +717,26 @@ workflows:
       - checkout-and-install-deps:
           filters:
             branches:
-              only: PC-14406
+              only: NTU
       #            tags:
 #              only: /.*/
       - test-lint-and-types:
           filters:
             branches:
-              ignore: PC-14406
+              ignore: NTU
           requires:
             - checkout-and-install-deps
       - test-native:
           filters:
             branches:
-              ignore: PC-14406
+              ignore: NTU
           requires:
             - checkout-and-install-deps
           context: SonarCloud
       - test-web:
           filters:
             branches:
-              ignore: PC-14406
+              ignore: NTU
           requires:
             - checkout-and-install-deps
       - deploy-soft-testing:
@@ -794,7 +794,7 @@ workflows:
       - deploy-android-staging-hard:
           filters:
             branches:
-              only: PC-14406
+              only: NTU
 #            tags:
 #              only: /^(patch\/)?v.*/
 #            branches:
