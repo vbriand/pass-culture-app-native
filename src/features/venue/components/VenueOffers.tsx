@@ -85,8 +85,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
   const seeAllOffers = useCallback(() => {
     analytics.logVenueSeeAllOffersClicked(venueId)
     saveVenueFilter()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [saveVenueFilter])
+  }, [saveVenueFilter, venueId])
 
   const showSeeMore = nbHits > hits.length
   const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venueId) : undefined
