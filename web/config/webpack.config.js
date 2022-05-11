@@ -605,8 +605,6 @@ module.exports = function (webpackEnv) {
         // This is used originally by our react-native app. It is useful to test if we are in development environment
         __DEV__: process.env.NODE_ENV !== 'production',
       }),
-      // This is necessary to emit hot updates (currently CSS only):
-      isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
       // Watcher doesn't work well if you mistype casing in a path so we use
       // a plugin that prints an error when you attempt to do this.
       // See https://github.com/facebook/create-react-app/issues/240
@@ -693,8 +691,14 @@ module.exports = function (webpackEnv) {
           include: paths.appBuild,
           rewrite: true,
           // for testing, we want to group the source map under one artifact and select sourcemaps using hash
-          release: env.raw.ENV === 'testing' ? `${appPackageJson.version}-web` : `${appPackageJson.version}-web-${env.raw.COMMIT_HASH}`,
-          dist: env.raw.ENV === 'testing' ? `${appPackageJson.build}-web-${env.raw.COMMIT_HASH}` : `${appPackageJson.build}-web`,
+          release:
+            env.raw.ENV === 'testing'
+              ? `${appPackageJson.version}-web`
+              : `${appPackageJson.version}-web-${env.raw.COMMIT_HASH}`,
+          dist:
+            env.raw.ENV === 'testing'
+              ? `${appPackageJson.build}-web-${env.raw.COMMIT_HASH}`
+              : `${appPackageJson.build}-web`,
           cleanArtifacts: false,
           finalize: env.raw.ENV !== 'testing',
           deploy: {
