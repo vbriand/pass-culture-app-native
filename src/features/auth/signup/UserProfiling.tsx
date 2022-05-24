@@ -1,4 +1,6 @@
-import Profiling from '@pass-culture/react-native-profiling'
+// FIXME(anoukhello) for now we don't want to use this package. When we need it again,
+// update this package to make it work with gradle 7 (introduced in react-native 0.67.0)
+// import Profiling from '@pass-culture/react-native-profiling'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Platform } from 'react-native'
@@ -6,7 +8,7 @@ import { Platform } from 'react-native'
 import { api } from 'api/api'
 import { UserProfilingFraudRequest } from 'api/gen'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { env } from 'libs/environment'
+// import { env } from 'libs/environment'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 // eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
@@ -27,13 +29,15 @@ export function UserProfiling({ resetErrorBoundary }: ScreenErrorProps) {
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
   const startProfiling = useCallback(() => {
     setSessionId(undefined)
-    Profiling.profileDevice(
-      env.TMX_ORGID,
-      env.TMX_FPSERVER,
-      setSessionId,
-      () => api.getnativev1userProfilingsessionId(),
-      (err) => setError(err as Error)
-    )
+    // FIXME(anoukhello) for now we don't want to use this package. When we need it again,
+    // update this package to make it work with gradle 7 (introduced in react-native 0.67.0)
+    // Profiling.profileDevice(
+    //   env.TMX_ORGID,
+    //   env.TMX_FPSERVER,
+    //   setSessionId,
+    //   () => api.getnativev1userProfilingsessionId(),
+    //   (err) => setError(err as Error)
+    // )
   }, [])
 
   useFocusEffect(startProfiling)
