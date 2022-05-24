@@ -45,6 +45,9 @@ LogBox.ignoreLogs([
   // of TabNavigator. As of today, no bug has been observed which seems related to the warning.
   'Cannot update a component',
   'EventEmitter.removeListener',
+  // FIXME(anoukhello) remove this log once react-native-dash have remove references to ViewPropTypes
+  // (https://github.com/obipawan/react-native-dash/pull/36) and once we bump react-native-date-picker to 4.2.2 version
+  'ViewPropTypes will be removed',
 ])
 
 const App: FunctionComponent = function () {
